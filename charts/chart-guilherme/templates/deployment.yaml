@@ -17,6 +17,7 @@ spec:
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+        checksum/configMap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       labels:
         {{- include "chart-guilherme.selectorLabels" . | nindent 8 }}
     spec:

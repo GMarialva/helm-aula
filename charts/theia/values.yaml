@@ -51,8 +51,16 @@ readinessProbe:
     path: /
     port: http
 
+configMap:
+  path: /home/project/conf
+  data:
+    arquivo.conf: |-
+        ambiente=dev
+        forks=15
+        etc...
+
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
