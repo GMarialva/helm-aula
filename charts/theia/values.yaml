@@ -1,4 +1,4 @@
-# Default values for chart-guilherme.
+# Default values for theia.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -8,7 +8,7 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.0.0-SNAPSHOT"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -36,6 +36,8 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+containerPort: 80
+
 service:
   type: ClusterIP
   port: 80
@@ -44,22 +46,14 @@ service:
 livenessProbe:
   httpGet:
     path: /
-    port: 80
+    port: http
   initialDelaySeconds: 3
   periodSeconds: 3
 
 readinessProbe:
   httpGet:
     path: /
-    port: 80
-
-secret:
-  name: app-env-vars
-  data:
-    MONGO_URI: "mongodb://localhost"
-    USERNAME: "admin"
-    PASSWORD: "password"
-
+    port: http
 ingress:
   enabled: false
   className: ""
