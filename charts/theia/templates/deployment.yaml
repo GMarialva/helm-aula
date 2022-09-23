@@ -42,11 +42,9 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           {{- with .Values.readinessProbe }}
-          readinessProbe:
+          readinessProbe: 
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: rishikoy/theiaide-full
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.0.0-SNAPSHOT"
@@ -36,8 +36,6 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-containerPort: 3000
-
 service:
   type: ClusterIP
   port: 3000
@@ -47,13 +45,12 @@ livenessProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 3
-  periodSeconds: 3
 
 readinessProbe:
   httpGet:
     path: /
     port: http
+
 ingress:
   enabled: false
   className: ""
