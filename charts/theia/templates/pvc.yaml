@@ -4,7 +4,11 @@ metadata:
   name: {{ include "theia.fullname" . }}
   labels:
     {{- include "theia.labels" . | nindent 4 }}
-{{- with .Values.persistentVolumeClaim.spec }}
 spec:
-  {{- toYaml . | nindent 2 }}
-{{- end }}
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+       storage: 2Gi
+  storageClassName: longhorn
+  volumeMode: Filesystem

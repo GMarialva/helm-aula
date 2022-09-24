@@ -30,6 +30,9 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
+      - name: disco
+        persistentVolumeClaim:
+           claimName: {{ include "theia.fullname" . }}
       - configMap:
           defaultMode: 509
           name: {{ include "theia.fullname" . }}
