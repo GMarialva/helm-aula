@@ -2,6 +2,6 @@ apiVersion: v2
 name: theia
 description: Chart Theia-IDE - Aula Cloud Native
 type: application
-version: 0.3.0
+version: 0.3.1
 appVersion: "1.16.0"
 icon: https://iconsoftheia.com/mini-icon.png

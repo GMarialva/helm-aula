@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "theia.fullname" . }}
+  labels:
+    {{- include "theia.labels" . | nindent 4 }}
+{{- with .Values.persistentVolumeClaim.spec }}
+spec:
+  {{- toYaml . | nindent 2 }}
+{{- end }}

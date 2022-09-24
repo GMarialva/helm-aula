@@ -17,6 +17,7 @@ spec:
       {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
+        checksum/PersistentVolumeClaim: {{ include (print $.Template.BasePath "/pvc.yaml") . | sha256sum }}
         checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       labels:
         {{- include "theia.selectorLabels" . | nindent 8 }}
@@ -54,6 +55,8 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
+          - mountPath: {{ .Values.persistentVolumeClaim.path }}
+            name: disco
           - mountPath: {{ .Values.configMap.path }}
             name: conf
       {{- with .Values.nodeSelector }}

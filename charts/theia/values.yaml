@@ -59,6 +59,17 @@ configMap:
       forks=20
       etc...
       
+persistentVolumeClaim:
+  path: /home/project
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 2Gi
+    storageClassName: longhorn
+    volumeMode: Filesystem
+
 ingress:
   enabled: true
   className: ""
