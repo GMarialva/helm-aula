@@ -6,6 +6,5 @@ metadata:
     {{- include "theia.labels" . | nindent 4 }}
 {{- with .Values.configMap.data }}
 data:
-    {{- toYaml . | nindent 2 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
-  

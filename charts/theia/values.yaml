@@ -55,10 +55,10 @@ configMap:
   path: /home/project/conf
   data:
     arquivo.conf: |-
-        ambiente=dev
-        forks=15
-        etc...
-
+      ambiente=dev
+      forks=20
+      etc...
+      
 ingress:
   enabled: true
   className: ""
